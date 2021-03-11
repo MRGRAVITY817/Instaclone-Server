@@ -10,8 +10,8 @@
     "lint": "gts lint",
     "clean": "gts clean",
     "compile": "tsc",
+    "studio": "npx prisma studio",
     "migrate": "npx prisma migrate dev --preview-feature",
-    "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
     "posttest": "npm run lint"
