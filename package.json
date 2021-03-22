@@ -4,12 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run ts:build & nodemon --exec node dist/server.js",
+    "dev": "nodemon --exec babel-node src/server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ts:build": "npx tsc -w",
-    "lint": "gts lint",
-    "clean": "gts clean",
-    "compile": "tsc",
     "studio": "npx prisma studio",
     "migrate": "npx prisma migrate dev --preview-feature",
     "prepare": "npm run compile",
@@ -22,9 +18,14 @@
   "dependencies": {
     "@prisma/client": "^2.18.0",
     "apollo-server": "^2.21.1",
-    "graphql": "^15.5.0"
+    "dotenv": "^8.2.0",
+    "graphql": "^15.5.0",
+    "graphql-tools": "^7.0.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
     "@types/graphql": "^14.5.0",
     "@types/node": "^14.11.2",
     "nodemon": "^2.0.7",
