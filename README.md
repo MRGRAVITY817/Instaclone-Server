@@ -5,10 +5,10 @@ Instaclone Backend
 
 ## User:
 
--[ ] Create Account
--[ ] See Profile 
+-[X] Create Account
+-[X] See Profile 
 -[ ] Login 
--[ ] Create Account
--[ ] Create Account
--[ ] Create Account
--[ ] Create Account
+-[ ] Edit Profile
+-[ ] Follow User
+-[ ] Unfollow User
+-[ ] Change Avatar (Image Upload)
