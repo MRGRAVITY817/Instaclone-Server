@@ -4,11 +4,11 @@ import { mergeTypeDefs } from '@graphql-tools/merge';
 import { makeExecutableSchema } from 'apollo-server-express';
 
 // Merge Type Defs
-const loadedTypes = loadFilesSync(`${__dirname}/**/*.typeDefs.js`);
+const loadedTypes = loadFilesSync(`${__dirname}/**/*.typeDefs.ts`);
 const typeDefs = mergeTypeDefs(loadedTypes);
 
 // Merge Resolvers
-const loadedResolvers = loadFilesSync(`${__dirname}/**/*.resolvers.js`);
+const loadedResolvers = loadFilesSync(`${__dirname}/**/*.resolvers.ts`);
 const resolvers = mergeResolvers(loadedResolvers);
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
