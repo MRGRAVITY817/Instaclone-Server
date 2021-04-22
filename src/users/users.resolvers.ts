@@ -1,10 +1,10 @@
-import client from '../client';
+import { Resolvers } from './types';
 
-export default {
+const resolvers: Resolvers = {
   // This field is not saved in DB, but computed from graphql server.
   User: {
     // Counting the number of users who have my name on their followers list
-    totalFollowing: ({ id }) =>
+    totalFollowing: ({ id }, _, { client }) =>
       client.user.count({
         where: {
           followers: {
@@ -15,7 +15,7 @@ export default {
         },
       }),
     // Counting the number of users who have my name on their following list
-    totalFollowers: ({ id }) =>
+    totalFollowers: ({ id }, _, { client }) =>
       client.user.count({
         where: {
           following: {
@@ -31,7 +31,7 @@ export default {
       }
       return id === loggedInUser.id;
     },
-    isFollowing: async ({ id }, _, { loggedInUser }) => {
+    isFollowing: async ({ id }, _, { loggedInUser, client }) => {
       if (!loggedInUser) {
         return false;
       }
@@ -45,3 +45,5 @@ export default {
     },
   },
 };
+
+export default resolvers;

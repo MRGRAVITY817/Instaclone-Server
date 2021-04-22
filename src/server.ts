@@ -4,6 +4,7 @@ import { getUser } from './users/users.utils';
 import * as express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import * as logger from 'morgan';
+import client from './client';
 
 const PORT: string = process.env.PORT;
 const apollo = new ApolloServer({
@@ -12,6 +13,7 @@ const apollo = new ApolloServer({
   context: async ({ req }) => {
     return {
       loggedInUser: await getUser(req.headers.token),
+      client,
     };
   },
 });
