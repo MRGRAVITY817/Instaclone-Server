@@ -19,9 +19,30 @@ model User {
   password  String
   bio       String?
   avatar    String?
+  photos    Photo[]
   followers User[]   @relation("FollowRelation", references: [id])
   following User[]   @relation("FollowRelation", references: [id])
   createdAt DateTime @default(now())
   upatedAt  DateTime @updatedAt
   userId    Int?
+}
+
+model Photo {
+  id        Int       @id @default(autoincrement())
+  user      User      @relation(fields: [userId], references: [id])
+  userId    Int
+  hashtags  Hashtag[]
+  file      String
+  caption   String?
+  createdAt DateTime  @default(now())
+  upatedAt  DateTime  @updatedAt
+}
+
+model Hashtag {
+  id        Int      @id @default(autoincrement())
+  hashtag   String   @unique
+  photos    Photo[]
+  createdAt DateTime @default(now())
+  upatedAt  DateTime @updatedAt
+
 }

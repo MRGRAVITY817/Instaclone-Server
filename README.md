@@ -17,11 +17,17 @@ Instaclone Backend
 
 ## Search: 
 
+- [ ] Upload Photo (Parse #)  
 - [ ] See Photo   
-- [ ] Upload Photo  
 - [ ] Edit Photo  
+- [ ] Search Photos   
+- [ ] See Hashtags   
 - [ ] Like / Unlike Photo  
 - [ ] See Photo Likes  
 - [ ] See Feed   
-- [ ] Search Photos   
-- [ ] See Hashtags   
+
+## Comments
+
+- [ ] Comment on Photo  
+- [ ] Edit Comment  
+- [ ] Delete Comment  
