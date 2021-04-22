@@ -1,7 +1,6 @@
-import { resolvers } from '../../schema';
 import { Resolvers } from '../types';
 
-const resolver: Resolvers = {
+const resolvers: Resolvers = {
   Query: {
     seeFollowing: async (_, { username, lastId }, { client }) => {
       try {
