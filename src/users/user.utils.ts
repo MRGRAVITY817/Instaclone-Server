@@ -6,9 +6,14 @@ export const getUser = async (token: string) => {
     if (!token) {
       return null;
     }
-    const verifiedToken = jwt.verify(token, process.env.PRIVATE_KEY);
-    if (verifiedToken) {
-      const user = await client.user.findUnique({ where: { id } });
+    const verified = jwt.verify(token, process.env.PRIVATE_KEY);
+    const user = await client.user.findUnique({
+      where: { id: verified['id'] },
+    });
+    if (user) {
+      return user;
+    } else {
+      return null;
     }
   } catch (error) {
     return null;
@@ -22,4 +27,5 @@ export const protectedResolver = (resolver) => (root, args, context, info) => {
       error: 'Please log in to proceed.',
     };
   }
+  return resolver(root, args, context, info);
 };

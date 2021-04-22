@@ -1,5 +1,4 @@
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+import * as bcrypt from 'bcrypt';
 import client from '../../client';
 
 export default {
@@ -16,7 +15,7 @@ export default {
           throw new Error('This username/email is already taken');
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        return client.user.create({
+        await client.user.create({
           data: {
             username,
             email,
@@ -25,8 +24,14 @@ export default {
             password: hashedPassword,
           },
         });
+        return {
+          ok: true,
+        };
       } catch (error) {
-        return error;
+        return {
+          ok: false,
+          error: 'Cannot create an account',
+        };
       }
     },
   },
