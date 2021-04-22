@@ -1,6 +1,6 @@
 import client from '../../client';
 import * as bcrypt from 'bcrypt';
-import { protectedResolver } from '../user.utils';
+import { protectedResolver } from '../users.utils';
 import { createWriteStream } from 'fs';
 
 export default {

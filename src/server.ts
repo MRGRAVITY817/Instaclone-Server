@@ -1,6 +1,6 @@
 require('dotenv').config();
 import { typeDefs, resolvers } from './schema';
-import { getUser } from './users/user.utils';
+import { getUser } from './users/users.utils';
 import * as express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import * as logger from 'morgan';

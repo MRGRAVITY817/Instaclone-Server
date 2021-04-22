@@ -12,8 +12,8 @@ Instaclone Backend
 - [X] Unfollow User  
 - [X] Change Avatar (Image Upload)  
 - [X] Follower pagination  
-- [ ] Computed Fields  
-- [ ] Search Fields  
+- [X] Computed Fields  
+- [X] Search Fields  
 
 ## Search: 
 
