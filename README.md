@@ -23,8 +23,8 @@ Instaclone Backend
 - [X] Edit Photo  
 - [X] Search Photos   
 - [X] Like / Unlike Photo  
-- [ ] See Photo Likes  
-- [ ] See Feed   
+- [X] See Photo Likes  
+- [X] See Feed   
 
 ## Comments
 
