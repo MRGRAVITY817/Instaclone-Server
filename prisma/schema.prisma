@@ -25,6 +25,7 @@ model User {
   createdAt DateTime @default(now())
   upatedAt  DateTime @updatedAt
   userId    Int?
+  likes     Like[]
 }
 
 model Photo {
@@ -36,6 +37,7 @@ model Photo {
   caption   String?
   createdAt DateTime  @default(now())
   upatedAt  DateTime  @updatedAt
+  likes     Like[]
 }
 
 model Hashtag {
@@ -45,4 +47,16 @@ model Hashtag {
   createdAt DateTime @default(now())
   upatedAt  DateTime @updatedAt
 
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  upatedAt  DateTime @updatedAt
+  photo     Photo    @relation(fields: [photoId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  photoId   Int
+  userId    Int
+
+  @@unique([photoId, userId])
 }

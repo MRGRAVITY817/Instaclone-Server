@@ -6,3 +6,5 @@ const resolvers: Resolvers = {
       client.hashtag.findUnique({ where: { hashtag } }),
   },
 };
+
+export default resolvers;

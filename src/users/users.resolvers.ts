@@ -43,6 +43,8 @@ const resolvers: Resolvers = {
       });
       return Boolean(exists);
     },
+    photos: ({ id }, _, { client }) =>
+      client.user.findUnique({ where: { id } }),
   },
 };
 
