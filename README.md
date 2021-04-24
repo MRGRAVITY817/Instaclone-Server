@@ -42,4 +42,4 @@ Instaclone Backend
 
 ## Extras
 
-- [ ] S3 Image Upload  
+- [X] S3 Image Upload  

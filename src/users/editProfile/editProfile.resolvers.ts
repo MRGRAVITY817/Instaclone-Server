@@ -2,6 +2,7 @@ import * as bcrypt from 'bcrypt';
 import { protectedResolver } from '../users.utils';
 import { createWriteStream } from 'fs';
 import { Resolvers } from '../types';
+import { uploadFile } from '../../shared/shared.utils';
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -22,14 +23,15 @@ const resolvers: Resolvers = {
         try {
           let avatarUrl = null;
           if (avatar) {
-            const { filename, createReadStream } = await avatar;
-            const newFileName = `${loggedInUser.id}-${Date.now()}-${filename}`;
-            const readStream = createReadStream();
-            const writeStream = createWriteStream(
-              process.cwd() + '/uploads/' + newFileName
-            );
-            readStream.pipe(writeStream);
-            avatarUrl = `http://localhost:4000/static/${newFileName}`;
+            avatarUrl = await uploadFile(avatar, loggedInUser.id, 'avatar');
+            // const { filename, createReadStream } = await avatar;
+            // const newFileName = `${loggedInUser.id}-${Date.now()}-${filename}`;
+            // const readStream = createReadStream();
+            // const writeStream = createWriteStream(
+            //   process.cwd() + '/uploads/' + newFileName
+            // );
+            // readStream.pipe(writeStream);
+            // avatarUrl = `http://localhost:4000/static/${newFileName}`;
           }
           let uglyPassword = null;
           if (newPassword) {
