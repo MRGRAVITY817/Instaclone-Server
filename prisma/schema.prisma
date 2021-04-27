@@ -27,6 +27,8 @@ model User {
   userId    Int?
   likes     Like[]
   comments  Comment[]
+  rooms     Room[]
+  Message   Message[]
 }
 
 model Photo {
@@ -72,4 +74,23 @@ model Comment {
   payload   String
   userId    Int
   photoId   Int
+}
+
+model Room {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  upatedAt  DateTime  @updatedAt
+  users     User[]
+  Message   Message[]
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  upatedAt  DateTime @updatedAt
+  payload   String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  room      Room     @relation(fields: [roomId], references: [id])
+  roomId    Int
 }
