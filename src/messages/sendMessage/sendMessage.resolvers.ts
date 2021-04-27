@@ -10,8 +10,9 @@ const resolvers: Resolvers = {
           if (userId) {
             const user = await client.user.findUnique({
               where: { id: userId },
-              select: { id: userId },
+              select: { id: true },
             });
+            console.log(user);
             if (!user) {
               return {
                 ok: false,
@@ -28,7 +29,7 @@ const resolvers: Resolvers = {
           } else if (roomId) {
             room = await client.room.findUnique({
               where: { id: roomId },
-              select: { id: roomId },
+              select: { id: true },
             });
             if (!room) {
               return {
