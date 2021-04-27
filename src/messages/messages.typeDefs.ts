@@ -8,11 +8,13 @@ export default gql`
     user: User!
     payload: String!
     room: Room!
+    read: Boolean!
   }
   type Room {
     id: Int!
     createdAt: String!
     updatedAt: String!
+    unreadTotal: Int!
     users: [User]
     messages: [Message]
   }
