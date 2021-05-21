@@ -1,3 +1,4 @@
+import client from '../client';
 import { Resolvers } from '../users/types';
 
 const resolvers: Resolvers = {
@@ -18,7 +19,25 @@ const resolvers: Resolvers = {
       client.comment.count({ where: { photoId: id } }),
     isMine: ({ userId }, _, { loggedInUser }) => {
       if (!loggedInUser) return false;
-      userId === loggedInUser.id;
+      return userId === loggedInUser.id;
+    },
+    isLiked: async ({ id }, _, { loggedInUser }) => {
+      if (!loggedInUser) return false;
+      const ok = await client.like.findUnique({
+        where: {
+          photoId_userId: {
+            photoId: id,
+            userId: loggedInUser.id,
+          },
+        },
+        select: {
+          id: true,
+        },
+      });
+      if (ok) {
+        return true;
+      }
+      return false;
     },
   },
   Hashtag: {
