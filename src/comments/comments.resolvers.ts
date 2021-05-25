@@ -4,7 +4,7 @@ const resolvers: Resolvers = {
   Comment: {
     isMine: ({ userId }, _, { loggedInUser }) => {
       if (!loggedInUser) return false;
-      userId === loggedInUser.id;
+      return userId === loggedInUser.id;
     },
   },
 };

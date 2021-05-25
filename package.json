@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/server --ext ts --delay 2",
+    "dev": "nodemon --exec ts-node src/server --ext ts --delay 1",
     "studio": "npx prisma studio",
     "migrate": "npx prisma migrate dev --preview-feature",
     "preinstall": "npx npm-force-resolutions"
