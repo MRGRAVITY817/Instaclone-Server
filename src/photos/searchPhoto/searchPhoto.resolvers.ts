@@ -5,7 +5,9 @@ const resolvers: Resolvers = {
     searchPhotos: (_, { keyword }, { client }) =>
       client.photo.findMany({
         where: {
-          caption: { startsWith: keyword },
+          caption: {
+            contains: keyword,
+          },
         },
       }),
   },
